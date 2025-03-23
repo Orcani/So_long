@@ -12,7 +12,8 @@
 
 #include "so_long.h"
 
-void	display_map(t_map *map)
+/*read the map with the get_next_line*/
+void	display_map(t_game *map)
 {
 	int		fd;
 
@@ -27,7 +28,7 @@ void	display_map(t_map *map)
 		map->line = get_next_line(fd);
 		if (map->line == NULL)
 			break ;
-		map->file = ft_strjoinfree(map->file, map->line);
+		map->file = ft_strjoinfree(map->file, map->line); // create a strjoinfree or replace by another function
 		free(map->line);
 		if (!map->file)
 			ft_exit_free(map);

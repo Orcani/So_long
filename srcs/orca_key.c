@@ -12,11 +12,11 @@
 
 #include "so_long.h"
 
-
-void	player_status(t_map *map)
+/*Update the player location*/
+void	player_status(t_game *map)
 {
 	map->player.y = 0;
-	map->player.x = 0;t
+	map->player.x = 0;
 	while (map->player.y < map->y)
 	{
 		while (map->player.x < map->x)
@@ -32,7 +32,8 @@ void	player_status(t_map *map)
 	}
 }
 
-int	key_hook(int keycode, t_map *map)
+/*Move the player left, right, up and dow but also close the file if the user press ESC or display the 'Win' if the goal is reached*/
+int	key_hook(int keycode, t_game *map)
 {
 	player_status(map);
 	if (keycode == ESC)

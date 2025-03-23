@@ -12,6 +12,7 @@
 
 #include "so_long.h"
 
+/*Free the map*/
 int	ft_free_array(char **ret, int i)
 {
 	while (i > 0)
@@ -20,7 +21,8 @@ int	ft_free_array(char **ret, int i)
 	return (0);
 }
 
-void	ft_exit_free(t_map *map)
+/*Free TOUT when the player exit*/
+void	ft_exit_free(t_game *map)
 {
 	if (map->array)
 		free(map->array);

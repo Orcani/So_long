@@ -13,7 +13,7 @@
 #include "so_long.h"
 
 
-int	ft_close(t_map *map)
+int	ft_close(t_game *map)
 {
 	mlx_destroy_window(map->mlx, map->wnd);
 	ft_free_array(map->array, map->y);
@@ -21,7 +21,7 @@ int	ft_close(t_map *map)
 	return (0);
 }
 
-void	ft_win(t_map *map)
+void	ft_win(t_game *map)
 {
 	map->exit_place = 1;
 	map->moves++;

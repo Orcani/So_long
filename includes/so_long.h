@@ -43,7 +43,7 @@ typedef struct s_player
 
 typedef struct s_img
 {
-	void	*empty;
+	void	*water;
 	void	*collectible;
 	void	*wall;
     void	*enemy;
@@ -58,7 +58,7 @@ typedef struct s_img
 	void	*player_down2;
 }t_img;
 
-typedef struct s_map
+typedef struct s_game
 {
 	int			fd;
 	char		*line;
@@ -80,45 +80,45 @@ typedef struct s_map
 	t_img		img;
 	t_player	player;
 
-}t_map;
+}t_game;
 
 
-void	map_g_check(t_map *map);
-void	display_map(t_map *mapper); //map array
-void	file_to_image(t_map *mapper);
-void	map_printer(t_map *mapper);
-int		key_hook(int keycode, t_map *map);
+void	map_g_check(t_game *map);
+void	display_map(t_game *mapper); //map array
+void	file_to_image(t_game *mapper);
+void	map_duplica(t_game *mapper);
+int		key_hook(int keycode, t_game *map);
 
 //error encounted
 void	error_filename(void);
-void	error_wall(t_map *map);
+void	error_wall(t_game *map);
 void	error_openfile(void);
-void	error_size(t_map *map);
-void	error_map_elements(t_map *map);
+void	error_size(t_game *map);
+void	error_map_elements(t_game *map);
 
 //free elements
-void	ft_exit_free(t_map *map);
+void	ft_exit_free(t_game *map);
 int		ft_free_array(char **ret, int i);
 
 //movements
-void	move_up(t_map *map);
-void	move_left(t_map *map);
-void	move_down(t_map *map);
-void	move_right(t_map *map);
+void	move_up(t_game *map);
+void	move_left(t_game *map);
+void	move_down(t_game *map);
+void	move_right(t_game *map);
 
 //update the player movement
-void	file_to_image_player(t_map *map);
+void	file_to_image_player(t_game *map);
 
 //display win and close map
-void	ft_win(t_map *map);
-int		ft_close(t_map *map);
+void	ft_win(t_game *map);
+int		ft_close(t_game *map);
 
-void	print_movements(t_map *map);
-void	map_init(t_map *map, char **av);
+void	print_movements(t_game *map);
+void	map_init(t_game *map, char **av);
 
 //floodfiller to check if the map is valid and follow player
-void	check_filling(t_map *map);
-void	player_status(t_map *map);
+void	check_filling(t_game *map);
+void	player_status(t_game *map);
 
 // // Structure for a sprite (for player, walls, floors, exit, enemies, collectibles)
 // typedef struct s_sprite {
@@ -133,7 +133,7 @@ void	player_status(t_map *map);
 //     int height;       // Height of the map (number of rows)
 //     int exit_x;       // X position of the exit
 //     int exit_y;       // Y position of the exit
-// } t_map;
+// } t_game;
 
 // typedef struct s_entity {
 //     char type;          // Type of the entity ('P' for player, '1' for wall, etc.)
@@ -170,7 +170,7 @@ void	player_status(t_map *map);
 // } t_data;
 
 // typedef struct s_game_state {
-//     t_map *map;                // Map structure
+//     t_game *map;                // Map structure
 //     t_player *player;          // Pointer to the player structure
 //     t_sprite *floor_sprite;    // Sprite for the floor
 //     t_sprite *wall_sprite;     // Sprite for the wall
@@ -191,9 +191,9 @@ void	player_status(t_map *map);
 // } t_game_state;
 
 
-// void validate_map_boundaries(t_map *map);
-// void check_wall_edges(t_map *map);
-// void wall_check(t_map *map);
+// void validate_map_boundaries(t_game *map);
+// void check_wall_edges(t_game *map);
+// void wall_check(t_game *map);
 // int player_count(t_game_state *game);
 // int exit_count(t_game_state *game);
 // int enemies_count(t_game_state *game);

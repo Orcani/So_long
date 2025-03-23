@@ -12,9 +12,8 @@
 
 #include "so_long.h"
 
-
-
-static void	name_file(t_map *map)
+/*Check if the name of the file is indeed a .ber and if a name exist for the .ber*/
+static void	name_file(t_game *map)
 {
 	size_t	len;
 
@@ -31,7 +30,8 @@ static void	name_file(t_map *map)
 		error_filename();
 }
 
-static void	floodfill(t_map *map)
+/*Check if all the elements are present for a game such as 1 exit, 1 player, at least a collectible etc...*/
+static void	floodfill(t_game *map)
 {
 	int	y;
 	int	x;
@@ -60,7 +60,8 @@ static void	floodfill(t_map *map)
 		error_map_elements(map);
 }
 
-static void	wall_check(t_map *map)
+/*Checking if the map is indeed rectangular AND has closed walls!*/
+static void	wall_check(t_game *map)
 {
 	int	x;
 	int	y;
@@ -85,7 +86,8 @@ static void	wall_check(t_map *map)
 		error_wall(map);
 }
 
-void	norm_size(t_map *map)
+/*Checking if the size of the map is possible. Two lines won't make a map.*/
+void	norm_size(t_game *map)
 {
 	int	y;
 	int	x;
@@ -104,11 +106,11 @@ void	norm_size(t_map *map)
 	map->x = max;
 }
 
-
-void	map_g_check(t_map *map)
+/*Gather all the checking points-> General check.*/
+void	map_g_check(t_game *map)
 {
 	name_file(map);
-	map_array(map);
+	// map_array(map);
 	norm_size(map);
 	wall_check(map);
 	floodfill(map);

@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	movement_to(int x, int y, t_map *map)
+void	movement_to(int x, int y, t_game *map)
 {
 	char	type;
 
@@ -37,16 +37,15 @@ void	movement_to(int x, int y, t_map *map)
 	movement_to(x, y - 1, map);
 }
 
-void	check_filling(t_map *map)
+void	check_filling(t_game *map)
 {
 	map->c_check = map->c;
 	map->e_check = map->e;
-	scan_player(map);
+	player_status(map);
 	movement_to(map->player.x, map->player.y, map);
 	if (map->c_check != 0 || map->e_check >= map->e)
 	{
-		write(2, "\033[1;31m🛑ERROR: ", 19);
-		write(2, "NO VALID PATH\n\033[0m", 19);
+		write(2, "NO VALID PATH\n", 14);
 		ft_free_array(map->array, map->y);
 		ft_free_array(map->copy, map->y);
 		exit(EXIT_FAILURE);

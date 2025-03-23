@@ -12,13 +12,14 @@
 
 #include "so_long.h"
 
-static void	map_type(t_map *map, int x, int y)
+/*Replace the 'E', 'P', '1', '0', 'C' into their iamahge and place them on the map*/
+static void	map_type(t_game *map, int x, int y)
 {
 	int	type;
 
 	type = map->array[y / IMG_PXL][x / IMG_PXL];
 	if (type == 'C' || type == 'P' || type == 'E' || type == '0')
-		mlx_put_image_to_window(map->mlx, map->wnd, map->img.empty, x, y);
+		mlx_put_image_to_window(map->mlx, map->wnd, map->img.water, x, y);
 	if (type == 'C')
 		mlx_put_image_to_window(map->mlx, map->wnd,
 			map->img.collectible, x, y);
@@ -31,7 +32,8 @@ static void	map_type(t_map *map, int x, int y)
 		mlx_put_image_to_window(map->mlx, map->wnd, map->img.wall, x, y);
 }
 
-void	map_printer(t_map *map)
+/*Update the map by putting the new map on top of the old one*/
+void	map_duplica(t_game *map)
 {
 	int	x;
 	int	y;
@@ -50,7 +52,8 @@ void	map_printer(t_map *map)
 	}
 }
 
-void	print_movements(t_map *map)
+/*Update the player movement in the terminal*/
+void	print_movements(t_game *map)
 {
 	char	*move;
 

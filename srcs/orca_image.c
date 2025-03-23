@@ -12,12 +12,13 @@
 
 #include "so_long.h"
 
-void	file_to_image(t_map *map)
+/*save the images xmp in the struture to be used somewhere else such as the water, walls, exit, collectible and enemies*/
+void	file_to_image(t_game *map)
 {
 	int	a;
 
 	a = IMG_PXL;
-	map->img.empty = mlx_xpm_file_to_image(map->mlx,
+	map->img.water = mlx_xpm_file_to_image(map->mlx,
 			"so_long_sprite/Water.xpm", &a, &a);
 	map->img.wall = mlx_xpm_file_to_image(map->mlx,
 			"so_long_sprite/Walls.xpm", &a, &a);
@@ -30,7 +31,8 @@ void	file_to_image(t_map *map)
 	file_to_image_player(map);
 }
 
-void	file_to_image_player(t_map *map)
+/*save the player xpm in the structure to be used somewhere else*/
+void	file_to_image_player(t_game *map)
 {
 	int	a;
 
