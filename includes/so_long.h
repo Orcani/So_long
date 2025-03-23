@@ -13,9 +13,7 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 50
-# endif
+
 
 # include <fcntl.h>
 # include <stdarg.h>
@@ -25,6 +23,102 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+
+# define UP      13
+# define DOWN    1
+# define LEFT    0
+# define RIGHT   2
+# define ESC     53
+# define IMG_PXL 50
+# define WND_NAME "Orca_so_long"
+
+
+
+typedef struct s_player
+{
+	int	y;
+	int	x;
+
+}t_player;
+
+typedef struct s_img
+{
+	void	*empty;
+	void	*collectible;
+	void	*wall;
+    void	*enemy;
+	void	*exit_place;
+	void	*player_left1;
+	void	*player_right1;
+	void	*player_up1;
+	void	*player_down1;
+	void	*player_left2;
+	void	*player_right2;
+	void	*player_up2;
+	void	*player_down2;
+}t_img;
+
+typedef struct s_map
+{
+	int			fd;
+	char		*line;
+	char		*file;
+	char		**array;
+	char		**copy;
+	char		*filename;
+	int			y;
+	int			x;
+	int			e;
+	int			c;
+	int			c_check;
+	int			e_check;
+	int			p;
+	int			exit_place;
+	int			moves;
+	void		*mlx;
+	void		*wnd;
+	t_img		img;
+	t_player	player;
+
+}t_map;
+
+
+void	map_g_check(t_map *map);
+void	display_map(t_map *mapper); //map array
+void	file_to_image(t_map *mapper);
+void	map_printer(t_map *mapper);
+int		key_hook(int keycode, t_map *map);
+
+//error encounted
+void	error_filename(void);
+void	error_wall(t_map *map);
+void	error_openfile(void);
+void	error_size(t_map *map);
+void	error_map_elements(t_map *map);
+
+//free elements
+void	ft_exit_free(t_map *map);
+int		ft_free_array(char **ret, int i);
+
+//movements
+void	move_up(t_map *map);
+void	move_left(t_map *map);
+void	move_down(t_map *map);
+void	move_right(t_map *map);
+
+//update the player movement
+void	file_to_image_player(t_map *map);
+
+//display win and close map
+void	ft_win(t_map *map);
+int		ft_close(t_map *map);
+
+void	print_movements(t_map *map);
+void	map_init(t_map *map, char **av);
+
+//floodfiller to check if the map is valid and follow player
+void	check_filling(t_map *map);
+void	player_status(t_map *map);
 
 // // Structure for a sprite (for player, walls, floors, exit, enemies, collectibles)
 // typedef struct s_sprite {

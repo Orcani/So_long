@@ -158,28 +158,49 @@
 //     return 0;
 // }
 
-
-int main(int argc, char *argv[])
+void	map_init(t_game *map, char **av)
 {
-    t_game_state game;
+	mam->filename = av[1];
+	map->moves = 0;
+	map->e = 0;
+	map->c = 0;
+	map->p = 0;
+	map->y = 0;
+	map->player.y = 0;
+	map->player.x = 0;
+	map->exit = 0;
+}
+
+int main(int ac, char *av[])
+{
+    t_game game;
     
+    if (ac == 2)
+	{
+    //check the validity of the map
+    map_init(&game, av);
+	map_checker(&game);
     // Initialize the game state
     game.mlx = mlx_init();
-    game.window = mlx_new_window(game.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "So Long");
+    game.window = mlx_new_window(game.mlx, game.x
+        * IMG_PXL, game.y * IMG_PXL, WND_NAME);
 
-    // Load the sprites
-    load_sprites(&game);
+    // // Load the sprites
+    // load_sprites(&game);
 
-    // Add entities to the game
-    add_entities_to_game(&game);
+    // // Add entities to the game
+    // add_entities_to_game(&game);
+    file_to_image(&game);
+	map_printer(&game);
 
     // Set up the game loop and key handler
-    mlx_loop_hook(game.mlx, game_loop, &game);
+    mlx_hook(game.mlx, game_loop, &game);
     mlx_key_hook(game.window, key_handler, &game);
     mlx_loop(game.mlx);
 
-    // Destroy the sprites when done
-    destroy_sprites(&game);
+    // // Destroy the sprites when done
+    // destroy_sprites(&game);
+    }
 
     return 0;
 }

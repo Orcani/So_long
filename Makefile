@@ -3,7 +3,7 @@ LIBFT = libft.a
 PRINTF = libftprintf.a
 MLX = libmlx.a
 
-SRC =  orca_parsing.c
+SRC =  orca_main.c orca_parsing.c orca_image.c orca_movement.c orca_updated_map.c orca_verification.c orca_win.c orca_file.c error.c free.c orca_key.c
 
 OBJ = $(addprefix $(SL_OBJS_DIR)/, $(SRC:.c=.o)) 
 

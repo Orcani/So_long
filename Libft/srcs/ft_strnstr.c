@@ -35,7 +35,6 @@
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
-	size_t	j;
 	size_t	tmp;
 
 	i = 0;
@@ -43,11 +42,9 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		return ((char *)big);
 	while (big[i] && i < len)
 	{
-		j = 0;
 		tmp = 0;
 		if (big[i] == little[tmp])
 		{
-			j = i;
 			while (big[i + tmp] == little[tmp] && (i + tmp) < len)
 			{
 				tmp++;
