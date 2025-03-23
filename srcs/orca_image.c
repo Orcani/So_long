@@ -18,15 +18,15 @@ void	file_to_image(t_map *map)
 
 	a = IMG_PXL;
 	map->img.empty = mlx_xpm_file_to_image(map->mlx,
-			"Resources/empty.xpm", &a, &a);
+			"so_long_sprite/Water.xpm", &a, &a);
 	map->img.wall = mlx_xpm_file_to_image(map->mlx,
-			"Resources/wall.xpm", &a, &a);
+			"so_long_sprite/Walls.xpm", &a, &a);
 	map->img.exit_place = mlx_xpm_file_to_image(map->mlx,
-			"Resources/door.xpm", &a, &a);
+			"so_long_sprite/Exit.xpm", &a, &a);
 	map->img.collectible = mlx_xpm_file_to_image(map->mlx,
-			"Resources/Estrellita.xpm", &a, &a);
+			"so_long_sprite/Collectible.xpm", &a, &a);
 	map->img.enemy = mlx_xpm_file_to_image(map->mlx,
-			"Resources/enemy.xpm", &a, &a);
+			"so_long_sprite/Enemies.xpm", &a, &a);
 	file_to_image_player(map);
 }
 
@@ -36,19 +36,19 @@ void	file_to_image_player(t_map *map)
 
 	a = IMG_PXL;
 	map->img.player_right1 = mlx_xpm_file_to_image(map->mlx,
-			"Resources/right-1-40.xpm", &a, &a);
-	map->img.player_right2 = mlx_xpm_file_to_image(map->mlx,
-			"Resources/right-2-40.xpm", &a, &a);
+			"so_long_sprite/Right_Orca.xpm", &a, &a);
+	// map->img.player_right2 = mlx_xpm_file_to_image(map->mlx,
+	// 		"Resources/right-2-40.xpm", &a, &a);
 	map->img.player_up1 = mlx_xpm_file_to_image(map->mlx,
-			"Resources/up-1-40.xpm", &a, &a);
-	map->img.player_up2 = mlx_xpm_file_to_image(map->mlx,
-			"Resources/up-2-40.xpm", &a, &a);
+			"so_long_sprite/Up_Orca.xpm", &a, &a);
+	// map->img.player_up2 = mlx_xpm_file_to_image(map->mlx,
+	// 		"Resources/up-2-40.xpm", &a, &a);
 	map->img.player_down1 = mlx_xpm_file_to_image(map->mlx,
-			"Resources/down-1-40.xpm", &a, &a);
-	map->img.player_down2 = mlx_xpm_file_to_image(map->mlx,
-			"Resources/down-2-40.xpm", &a, &a);
+			"so_long_sprite/Down_Orca.xpm", &a, &a);
+	// map->img.player_down2 = mlx_xpm_file_to_image(map->mlx,
+	// 		"Resources/down-2-40.xpm", &a, &a);
 	map->img.player_left1 = mlx_xpm_file_to_image(map->mlx,
-			"Resources/left-1-40.xpm", &a, &a);
-	map->img.player_left2 = mlx_xpm_file_to_image(map->mlx,
-			"Resources/left-2-40.xpm", &a, &a);
+			"so_long_sprite/Left_Orca.xpm", &a, &a);
+	// map->img.player_left2 = mlx_xpm_file_to_image(map->mlx,
+	// 		"Resources/left-2-40.xpm", &a, &a);
 }
